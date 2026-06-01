@@ -51,6 +51,8 @@
     <maven-jar-plugin.version>3.5.0</maven-jar-plugin.version>
     <!-- Overridden per module; used in the OSGi/WebJar manifest below. -->
     <webjar.license>MIT</webjar.license>
+    <!-- 'none' disables the empty-javadoc jar for this pom parent; child modules set 'package'. -->
+    <empty.javadoc.phase>none</empty.javadoc.phase>
   </properties>
 
   <build>
@@ -90,6 +92,44 @@
       <id>release</id>
       <build>
         <plugins>
+          <!-- Central requires a sources jar per artifact (empty is fine for asset-only WebJars). -->
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-source-plugin</artifactId>
+            <version>3.3.1</version>
+            <executions>
+              <execution>
+                <id>attach-sources</id>
+                <phase>package</phase>
+                <goals>
+                  <goal>jar-no-fork</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+
+          <!-- Central requires a javadoc jar per artifact. These are asset-only WebJars with no
+               Java sources, so maven-javadoc-plugin produces nothing; attach an empty javadoc jar instead. -->
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-jar-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>empty-javadoc-jar</id>
+                <!-- 'none' in this (pom) parent; child modules override to 'package'. -->
+                <phase>${empty.javadoc.phase}</phase>
+                <goals>
+                  <goal>jar</goal>
+                </goals>
+                <configuration>
+                  <classifier>javadoc</classifier>
+                  <forceCreation>true</forceCreation>
+                  <classesDirectory>${project.build.directory}/empty-javadoc</classesDirectory>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-gpg-plugin</artifactId>

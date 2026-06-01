@@ -28,5 +28,6 @@
 
     <properties>
         <webjar.license>MIT</webjar.license>
+        <empty.javadoc.phase>package</empty.javadoc.phase>
     </properties>
 </project>

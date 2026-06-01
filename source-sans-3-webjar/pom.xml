@@ -28,5 +28,6 @@
 
     <properties>
         <webjar.license>SIL-OFL-1.1</webjar.license>
+        <empty.javadoc.phase>package</empty.javadoc.phase>
     </properties>
 </project>
