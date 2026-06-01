@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                             https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>de.l9g.webjars</groupId>
+        <artifactId>webjars-parent</artifactId>
+        <version>1.0.0</version>
+    </parent>
+
+    <artifactId>source-sans-3</artifactId>
+    <version>5.0.12</version>
+    <packaging>jar</packaging>
+
+    <name>Source Sans 3 Fontsource WebJar</name>
+    <description>@fontsource/source-sans-3 5.0.12 (CSS + woff/woff2 subsets) packaged as a WebJar (de.l9g.webjars namespace).</description>
+    <url>https://fontsource.org/fonts/source-sans-3</url>
+
+    <licenses>
+        <license>
+            <name>SIL Open Font License 1.1</name>
+            <url>https://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&amp;id=OFL</url>
+        </license>
+    </licenses>
+
+    <properties>
+        <webjar.license>SIL-OFL-1.1</webjar.license>
+    </properties>
+</project>
